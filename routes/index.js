@@ -71,13 +71,13 @@ router.get('/ntou', async (req, res, next) => {
 
 router.get('/project/ntou/data.json', async (req, res) => {
     let datas = await Mlab.getData();
-    let data_20 = datas.map(data => {
+    let data_20 = datas.sort((a, b) => (new Date(a.created_at) > new Date(b.created_at)) ? -1 : 1).map(data => {
         data.t = moment(new Date(data.created_at)).format('ss.SSS');
         data.created_at = moment(new Date(data.created_at)).format('MMMM Do YYYY, h:mm:ss a');
 
         return data;
     }).slice(0, 20);
-
+    
     res.json(data_20);
 });
 
