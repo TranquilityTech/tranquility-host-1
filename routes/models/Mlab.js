@@ -124,7 +124,7 @@ Mlab.getData_20 = (callback) => {
     });
 };
 
-Mlab.saveData = (data) => {console.log(data);
+Mlab.saveData = (data) => {
     mongodb.MongoClient.connect(mongodbUrl, {
         useNewUrlParser: true,
         useUnifiedTopology: true
